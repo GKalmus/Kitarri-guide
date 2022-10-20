@@ -2,3 +2,10 @@ header {
     display: flex;
     flex-direction:ro
 }
+sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
