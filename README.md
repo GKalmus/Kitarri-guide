@@ -1,1 +1,0 @@
-# Kitarri-algaja-guide
