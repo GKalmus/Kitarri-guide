@@ -11,6 +11,11 @@ article {
     background-color: var(--content-bg-color) ; /* Artikli taustavärv */
     border-radius: 15px 30px; /* Artikli nurga raadius */
     overflow: hidden; /* Sisu ei läheks välja konteinerist */
+    transition: 0.2; /* Animatsiooni aeg */
+}
+
+article:hover {
+    box-shadow: 0 0 10px rgb(34, 34, 34); /* Artikli varju */
 }
 
 /* Artikli ülemine osa*/
