@@ -2,13 +2,11 @@ body{
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    background-color: bisque;
+    background-color: var(--background-color);
 }
 
 aside#sidebar{
-    
-    background-color: rgb(64, 38, 12);
-
+    background-color: var(--secondary-bg-color)
 }
 
 aside ul{
