@@ -1,5 +1,6 @@
 html,body {
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif; /* Font */
     margin: 0;
     padding: 0;
 <<<<<<< Updated upstream
@@ -59,4 +60,58 @@ article p.pildiallkiri{
     margin-top: 0px;
     font-size: 10px;
 >>>>>>> Stashed changes
+}
+
+/* Artikkel (konteiner)*/
+article {
+    margin: 10%; /* Ruum artikli ümber */
+    background-color: var(--content-bg-color) ; /* Artikli taustavärv */
+    border-radius: 15px 30px; /* Artikli nurga raadius */
+    overflow: hidden; /* Sisu ei läheks välja konteinerist */
+}
+
+/* Artikli ülemine osa*/
+.article-header{
+    background-color: var(--secondary-bg-color); /* Taustavärv */
+    width: 92%; /* Ülemise osa laius 92% artikli laiusest */
+    padding-left: 4%; /* Vasak tühi ruum */
+    padding-right: 4%; /* Parempoolne tühi ruum */
+    display: inline-flex; /* Paneme sisu ritta */
+    align-items: center; /* Joondame sisu vertikaalselt keskele */
+    justify-content: space-between; /* Teeme ruumi sisu vahele */
+}
+
+/* Artikli pealkiri*/
+article h3{
+    color: white; /* Pealkirja värv */
+}
+
+/* Artikli pealkirja X nupp */
+.article-header input{
+    height: 20px; /* Nupu suuruseks 20x20 */
+    width: 20px;
+}
+
+/* Artikli sisu konteiner */
+.article-content{
+    padding: 4%;
+    padding-top: 0;
+    padding-bottom: 5px;
+}
+
+/* Artikli tekstiline sisu */
+article p{
+
+}
+
+/* Artiklis olev pilt */
+article img{
+
+}
+
+/* Artikli pildiallkiri */
+article p.pildiallkiri{
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 10px;
 }
