@@ -1,15 +1,20 @@
 html,body {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif; /* Font */
+    color: white; /* Font color */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background-color: var(--background-color);
 }
 
 /* Artikkel (konteiner)*/
 article {
     margin: 10%; /* Ruum artikli ümber */
     background-color: var(--content-bg-color) ; /* Artikli taustavärv */
-    border-radius: 15px 30px; /* Artikli nurga raadius */
+    /*border-radius: 15px 30px; /* Artikli nurga raadius */
     overflow: hidden; /* Sisu ei läheks välja konteinerist */
     transition: 0.2; /* Animatsiooni aeg */
 }
@@ -62,4 +67,65 @@ article p.pildiallkiri{
     padding-top: 0px;
     margin-top: 0px;
     font-size: 10px;
+}
+
+/* Sidebar asjad */
+aside#sidebar {
+    background-color: var(--secondary-bg-color);
+    width: 375px;
+}
+
+aside ul {
+    list-style-type: none;
+}
+
+aside li {
+    padding-top: 10px;
+}
+
+aside a {
+    color: white;
+    font-size: 20px;
+}
+
+#sidebar_header {
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 20px;
+    width: 315px;
+    background-color: var(--secondary-bg-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sidebar_header h1 {
+    font-size: 20px;
+    color: white;
+    display: inline-block;
+}
+
+#sidebar_header img {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+}
+
+aside#sidebar a:link {
+    text-decoration: none;
+}
+
+
+aside#sidebar a:visited {
+    text-decoration: none;
+}
+
+
+aside#sidebar a:hover {
+    text-decoration: none;
+}
+
+
+aside#sidebar a:active {
+    text-decoration: none;
 }
