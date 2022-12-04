@@ -6,6 +6,8 @@
  * Metronoomi lehekülje kood
  *
  * Autor: Taavi Künnapuu
+ * Abistas: Gert Kalmus
+ * 
  **********************************************************/
 
 const metronome = new Audio('./audio/metronome2.wav'); // Metronoomi heli
@@ -17,6 +19,11 @@ let wasPlaying = false; // Kas metronoom mängis enne peatamist
 let cleared = false; // Kas interval on tühjendatud
 let inited = false; // Kas metronoom on käivitatud
 let newBeatAllowed = true; // Kas uus intervall on lubatud.
+
+
+var kaheneNupp = document.getElementById("kaheneNupp"); // https://stackoverflow.com/questions/31579700/
+kaheneNupp.addEventListener("click", init); // https://stackoverflow.com/questions/31579700/
+
 
 // Funktioon, mis käivitab metronoomi
 async function play() {
@@ -53,6 +60,11 @@ async function play() {
 
 // Stop funktsioon. Muudab muutujate väärtusi vastavalt.
 function stop() {
+
+  kaheneNupp.removeEventListener("click", stop); // https://stackoverflow.com/questions/31579700/
+  kaheneNupp.addEventListener("click", init);
+  kaheneNupp.value = "Start";
+
   wasPlaying = playing;
   playing = false;
   inited = false;
@@ -74,6 +86,10 @@ slider.oninput = function () {
 // Funktsioon, mida kutsub välja "Start" nupp
 function init() {
   // Kontroll, kas metronoom on käivitatud ja ei tekkiks topelt intervalli
+  kaheneNupp.removeEventListener("click", init); // https://stackoverflow.com/questions/31579700/
+  kaheneNupp.addEventListener("click", stop);
+  kaheneNupp.value = "Stop";
+
   if (!inited) {
     inited = true;
     play();
@@ -94,3 +110,4 @@ slider.onmouseup = function () {
     newBeatAllowed = false;
   }
 };
+

@@ -1,5 +1,6 @@
-button {
-    background-color: #4caf50; /* Green */
+#kaheneNupp{
+    background-color: #4CAF50; /* Green */
+    width: 100px;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -7,15 +8,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-
-    position: absolute;
-    top: 1%;
-    left: 50%;
-
-    width: 10%;
-    height: 10%;
 }
-
 
 .slider {
     border-radius: 5px;
