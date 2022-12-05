@@ -7,7 +7,7 @@
  *
  * Autor: Taavi Künnapuu
  * Abistas: Gert Kalmus
- * 
+ *
  **********************************************************/
 
 const metronome = new Audio('./audio/metronome2.wav'); // Metronoomi heli
@@ -19,17 +19,17 @@ let wasPlaying = false; // Kas metronoom mängis enne peatamist
 let cleared = false; // Kas interval on tühjendatud
 let inited = false; // Kas metronoom on käivitatud
 let newBeatAllowed = true; // Kas uus intervall on lubatud.
+let canChangeText = true;
 
-
-var kaheneNupp = document.getElementById("kaheneNupp"); // https://stackoverflow.com/questions/31579700/
-kaheneNupp.addEventListener("click", init); // https://stackoverflow.com/questions/31579700/
-
+var kaheneNupp = document.getElementById('kaheneNupp'); // https://stackoverflow.com/questions/31579700/
+kaheneNupp.addEventListener('click', init); // https://stackoverflow.com/questions/31579700/
 
 // Funktioon, mis käivitab metronoomi
 async function play() {
   // Muudame "playing" muutuja trueks, et näidata, et metronoom on käivitatud
   playing = true;
   metronome.play();
+  kaheneNupp.value = 'Stop';
 
   // Interval, mis käivitab metronoomi uuesti iga 60/bpm sekundi järel
   const interval = setInterval(() => {
@@ -60,11 +60,9 @@ async function play() {
 
 // Stop funktsioon. Muudab muutujate väärtusi vastavalt.
 function stop() {
-
-  kaheneNupp.removeEventListener("click", stop); // https://stackoverflow.com/questions/31579700/
-  kaheneNupp.addEventListener("click", init);
-  kaheneNupp.value = "Start";
-
+  kaheneNupp.removeEventListener('click', stop); // https://stackoverflow.com/questions/31579700/
+  kaheneNupp.addEventListener('click', init);
+  if (canChangeText) kaheneNupp.value = 'Start';
   wasPlaying = playing;
   playing = false;
   inited = false;
@@ -73,6 +71,7 @@ function stop() {
 // Kutsutakse välja kui slaiderile vajutatakse
 slider.onmousedown = function () {
   wasPlaying = playing;
+  canChangeText = false;
   stop();
 };
 
@@ -86,9 +85,11 @@ slider.oninput = function () {
 // Funktsioon, mida kutsub välja "Start" nupp
 function init() {
   // Kontroll, kas metronoom on käivitatud ja ei tekkiks topelt intervalli
-  kaheneNupp.removeEventListener("click", init); // https://stackoverflow.com/questions/31579700/
-  kaheneNupp.addEventListener("click", stop);
-  kaheneNupp.value = "Stop";
+  kaheneNupp.removeEventListener('click', init); // https://stackoverflow.com/questions/31579700/
+  kaheneNupp.addEventListener('click', stop);
+  console.log('init');
+
+  kaheneNupp.value = 'Stop';
 
   if (!inited) {
     inited = true;
@@ -104,10 +105,11 @@ function init() {
 
 // Kutsutakse välja kui slaiderist lahti lastakse
 slider.onmouseup = function () {
+  canChangeText = true;
+
   if (wasPlaying) {
     play();
     cleared = false;
     newBeatAllowed = false;
   }
 };
-
