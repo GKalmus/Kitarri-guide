@@ -1,6 +1,7 @@
 console.log('Hello World');
 
 window.onclick = (e) => {
+  console.log(e.target);
   if (e.target.id === 'closeMenuBtn') {
     if (
       isHidden(
