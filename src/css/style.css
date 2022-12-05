@@ -11,6 +11,9 @@ body {
 main {
     padding-top: 100px;
     padding-left: 200px;
+    display: flex;
+    flex-direction: column;
+    flex: content;
 }
 
 html {

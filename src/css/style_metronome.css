@@ -12,11 +12,6 @@
     text-align: center;
 }
 
-main {
-    display: block;
-    flex: content;
-    padding-top: 100px;
-}
 
 #buttonAndSlider{
     display: flex;
