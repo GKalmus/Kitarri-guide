@@ -19,7 +19,7 @@ let wasPlaying = false; // Kas metronoom mängis enne peatamist
 let cleared = false; // Kas interval on tühjendatud
 let inited = false; // Kas metronoom on käivitatud
 let newBeatAllowed = true; // Kas uus intervall on lubatud.
-let canChangeText = true;
+let draggingSlider = false;
 
 var kaheneNupp = document.getElementById('kaheneNupp'); // https://stackoverflow.com/questions/31579700/
 kaheneNupp.addEventListener('click', init); // https://stackoverflow.com/questions/31579700/
@@ -29,7 +29,6 @@ async function play() {
   // Muudame "playing" muutuja trueks, et näidata, et metronoom on käivitatud
   playing = true;
   metronome.play();
-  kaheneNupp.value = 'Stop';
 
   // Interval, mis käivitab metronoomi uuesti iga 60/bpm sekundi järel
   const interval = setInterval(() => {
@@ -60,9 +59,11 @@ async function play() {
 
 // Stop funktsioon. Muudab muutujate väärtusi vastavalt.
 function stop() {
-  kaheneNupp.removeEventListener('click', stop); // https://stackoverflow.com/questions/31579700/
-  kaheneNupp.addEventListener('click', init);
-  if (canChangeText) kaheneNupp.value = 'Start';
+  if (!draggingSlider) {
+    kaheneNupp.removeEventListener('click', stop); // https://stackoverflow.com/questions/31579700/
+    kaheneNupp.addEventListener('click', init);
+    kaheneNupp.value = 'Start';
+  }
   wasPlaying = playing;
   playing = false;
   inited = false;
@@ -71,7 +72,7 @@ function stop() {
 // Kutsutakse välja kui slaiderile vajutatakse
 slider.onmousedown = function () {
   wasPlaying = playing;
-  canChangeText = false;
+  draggingSlider = true;
   stop();
 };
 
@@ -82,13 +83,21 @@ slider.oninput = function () {
   document.getElementById('bpm-value').innerHTML = bpm;
 };
 
+// Kutsutakse välja kui slaiderist lahti lastakse
+slider.onmouseup = function () {
+  if (wasPlaying) {
+    play();
+    cleared = false;
+    newBeatAllowed = false;
+  }
+  draggingSlider = false;
+};
+
 // Funktsioon, mida kutsub välja "Start" nupp
 function init() {
   // Kontroll, kas metronoom on käivitatud ja ei tekkiks topelt intervalli
   kaheneNupp.removeEventListener('click', init); // https://stackoverflow.com/questions/31579700/
   kaheneNupp.addEventListener('click', stop);
-  console.log('init');
-
   kaheneNupp.value = 'Stop';
 
   if (!inited) {
@@ -102,14 +111,3 @@ function init() {
     }
   }
 }
-
-// Kutsutakse välja kui slaiderist lahti lastakse
-slider.onmouseup = function () {
-  canChangeText = true;
-
-  if (wasPlaying) {
-    play();
-    cleared = false;
-    newBeatAllowed = false;
-  }
-};
