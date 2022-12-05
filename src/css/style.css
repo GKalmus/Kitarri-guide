@@ -9,6 +9,7 @@ body {
 }
 
 main {
+    padding-top: 100px;
     padding-left: 200px;
 }
 
@@ -18,7 +19,9 @@ html {
 
 /* Artikkel (konteiner)*/
 article {
-    padding: 10%; /* Ruum artikli ümber */
+    padding-left: 10%; /* Ruum artikli ümber */
+    padding-right: 10%;
+    padding-bottom: 20px;
     background-color: var(--content-bg-color) ; /* Artikli taustavärv */
     /*border-radius: 15px 30px; /* Artikli nurga raadius */
     overflow: hidden; /* Sisu ei läheks välja konteinerist */
