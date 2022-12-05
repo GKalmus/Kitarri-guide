@@ -1,0 +1,9 @@
+#akordid{   
+    display: flex;
+    flex-direction: column;
+}
+
+img.akord {
+    width: 35%;
+    display: inline-block;
+}

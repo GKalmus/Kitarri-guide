@@ -1,20 +1,24 @@
-html,body {
-    height: 100%;
+body {
     font-family: Arial, Helvetica, sans-serif; /* Font */
     color: white; /* Font color */
     margin: 0;
-    height: 100%;
     width: 100%;
     padding: 0;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
     background-color: var(--background-color);
+}
+
+main {
+    padding-left: 200px;
+}
+
+html {
+    height: 100%;
 }
 
 /* Artikkel (konteiner)*/
 article {
-    margin: 10%; /* Ruum artikli ümber */
+    padding: 10%; /* Ruum artikli ümber */
     background-color: var(--content-bg-color) ; /* Artikli taustavärv */
     /*border-radius: 15px 30px; /* Artikli nurga raadius */
     overflow: hidden; /* Sisu ei läheks välja konteinerist */
@@ -72,8 +76,10 @@ article p.pildiallkiri{
 }
 
 /* Sidebar asjad */
-aside#sidebar {
+aside {
     background-color: var(--secondary-bg-color);
+    position: fixed;
+    height: 100%;
     width: 200px;
 }
 
