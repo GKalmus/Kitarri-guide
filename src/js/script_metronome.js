@@ -19,7 +19,7 @@ let wasPlaying = false; // Kas metronoom mängis enne peatamist
 let cleared = false; // Kas interval on tühjendatud
 let inited = false; // Kas metronoom on käivitatud
 let newBeatAllowed = true; // Kas uus intervall on lubatud.
-let draggingSlider = false;
+let draggingSlider = false; // Kas slaiderit liigutatakse
 
 var kaheneNupp = document.getElementById('kaheneNupp'); // https://stackoverflow.com/questions/31579700/
 kaheneNupp.addEventListener('click', init); // https://stackoverflow.com/questions/31579700/

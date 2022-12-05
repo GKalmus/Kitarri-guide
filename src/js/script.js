@@ -1,8 +1,8 @@
 console.log('Hello World');
 
 window.onclick = (e) => {
-  console.log(e.target);
-  if (e.target.id === 'closeMenuBtn') {
+  console.log(e.target.className);
+  if (e.target.className === 'closeMenuBtn') {
     if (
       isHidden(
         e.target.parentNode.parentNode.getElementsByClassName(
